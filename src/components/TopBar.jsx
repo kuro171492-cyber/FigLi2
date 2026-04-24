@@ -30,17 +30,20 @@ const X = (props) => <Icon name="close" {...props} />;
 const Eye = (props) => <Icon name="visibility" {...props} />;
 const EyeOff = (props) => <Icon name="visibility_off" {...props} />;
 const Check = (props) => <Icon name="check" {...props} />;
+const Layers = (props) => <Icon name="layers" {...props} />;
 
 export const TopBar = React.memo(function TopBar({
   activeTool,
   shapes,
   polyPoints,
   showSettings,
+  showLayers,
   selectedShape,
   onImageUpload,
   onSetTool,
   onToggleAllVisibility,
   onSetShowSettings,
+  onSetShowLayers,
   onFinalizePoly
 }) {
   const anyVisible = shapes.some(s => s.isVisible);
@@ -79,6 +82,14 @@ export const TopBar = React.memo(function TopBar({
             </span>
           </button>
         )}
+        
+        <button
+          onClick={() => { onSetShowLayers(!showLayers); onSetShowSettings(false); }}
+          className={`p-2 rounded-lg transition-all ${showLayers ? 'bg-blue-500 text-white' : 'bg-[#222] text-gray-400'}`}
+          title="Layers"
+        >
+          <Layers size={20}/>
+        </button>
       </div>
 
       {activeTool === TOOLS.POLY_DRAW && (
@@ -98,7 +109,7 @@ export const TopBar = React.memo(function TopBar({
       <div className="flex items-center gap-2">
         {selectedShape && (
           <button 
-            onClick={() => { onSetShowSettings(!showSettings); }} 
+            onClick={() => { onSetShowSettings(!showSettings); onSetShowLayers(false); }} 
             className={`p-2 rounded-lg transition-all ${showSettings ? 'bg-blue-500 text-white' : 'bg-[#222] text-gray-400'}`}
           >
             <Settings2 size={20}/>
