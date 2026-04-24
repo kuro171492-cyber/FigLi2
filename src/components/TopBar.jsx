@@ -48,6 +48,16 @@ export const TopBar = React.memo(function TopBar({
 }) {
   const anyVisible = shapes.some(s => s.isVisible);
 
+  const toolButtons = [
+    { id: TOOLS.SELECT, icon: MousePointer2, color: '#6b7280', label: 'Select' },
+    { id: TOOLS.PAN, icon: Hand, color: '#3b82f6', label: 'Pan' },
+    { id: TOOLS.RECTANGLE, icon: () => <Icon name="rectangle" />, color: '#10b981', label: 'Rect' },
+    { id: TOOLS.CIRCLE, icon: () => <Icon name="circle" />, color: '#f59e0b', label: 'Circle' },
+    { id: TOOLS.LINE, icon: () => <Icon name="line" />, color: '#8b5cf6', label: 'Line' },
+    { id: TOOLS.POLY_DRAW, icon: () => <Icon name="polyline" />, color: '#ec4899', label: 'Poly' },
+    { id: TOOLS.TEXT, icon: () => <span style={{ fontSize: '14px', fontWeight: 'bold' }}>T</span>, color: '#06b6d4', label: 'Text' }
+  ];
+
   return (
     <div className="h-14 border-b border-white/5 flex items-center justify-between px-3 shrink-0 bg-[#111] z-50">
       <div className="flex items-center gap-2">
@@ -55,19 +65,31 @@ export const TopBar = React.memo(function TopBar({
           <FileImage size={18} />
           <input type="file" className="hidden" onChange={onImageUpload} accept="image/*" />
         </label>
-        <div className="flex bg-[#222] rounded-lg p-0.5 border border-white/10">
-          <button 
-            onClick={() => { onSetTool(TOOLS.SELECT); }} 
-            className={`p-2 rounded-md transition-all ${activeTool === TOOLS.SELECT ? 'bg-white/10 text-white' : 'text-gray-500'}`}
-          >
-            <MousePointer2 size={18}/>
-          </button>
-          <button 
-            onClick={() => { onSetTool(TOOLS.PAN); }} 
-            className={`p-2 rounded-md transition-all ${activeTool === TOOLS.PAN ? 'bg-white/10 text-white' : 'text-gray-500'}`}
-          >
-            <Hand size={18}/>
-          </button>
+        
+        <div className="flex items-center gap-1">
+          {toolButtons.map(tool => {
+            const isActive = activeTool === tool.id;
+            const IconComponent = tool.icon;
+            return (
+              <button
+                key={tool.id}
+                onClick={() => onSetTool(tool.id)}
+                className={`p-2 rounded-md transition-all flex flex-col items-center min-w-[50px] ${
+                  isActive 
+                    ? 'text-white ring-2 ring-offset-1 ring-offset-[#111]' 
+                    : 'text-gray-500 hover:text-gray-300'
+                }`}
+                style={{
+                  backgroundColor: isActive ? tool.color : 'transparent',
+                  ringColor: isActive ? tool.color : 'transparent'
+                }}
+                title={tool.label}
+              >
+                <IconComponent size={18} />
+                <span style={{ fontSize: '8px', marginTop: '2px' }}>{tool.label}</span>
+              </button>
+            );
+          })}
         </div>
 
         {shapes.length > 0 && (
@@ -82,7 +104,7 @@ export const TopBar = React.memo(function TopBar({
             </span>
           </button>
         )}
-        
+
         <button
           onClick={() => { onSetShowLayers(!showLayers); onSetShowSettings(false); }}
           className={`p-2 rounded-lg transition-all ${showLayers ? 'bg-blue-500 text-white' : 'bg-[#222] text-gray-400'}`}
@@ -108,8 +130,8 @@ export const TopBar = React.memo(function TopBar({
 
       <div className="flex items-center gap-2">
         {selectedShape && (
-          <button 
-            onClick={() => { onSetShowSettings(!showSettings); onSetShowLayers(false); }} 
+          <button
+            onClick={() => { onSetShowSettings(!showSettings); onSetShowLayers(false); }}
             className={`p-2 rounded-lg transition-all ${showSettings ? 'bg-blue-500 text-white' : 'bg-[#222] text-gray-400'}`}
           >
             <Settings2 size={20}/>
