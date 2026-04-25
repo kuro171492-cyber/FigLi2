@@ -1,0 +1,338 @@
+/* ScrollColors.css - Цветовая схема для свитков по месяцам */
+
+/* 
+ * Цветовые палитры по сезонам:
+ * - Январь, Февраль: Синие оттенки
+ * - Март, Апрель, Май: Зеленые оттенки
+ * - Июнь, Июль, Август: Красные оттенки
+ * - Сентябрь, Октябрь, Ноябрь: Оранжевые оттенки
+ * - Декабрь: Фиолетовые оттенки
+ * 
+ * Недели внутри месяца: от светлого к темному
+ */
+
+/* ==================== Базовые переменные ==================== */
+:root {
+  /* Синяя палитра (Январь, Февраль) */
+  --scroll-blue-week1: #e3f2fd;
+  --scroll-blue-week2: #bbdefb;
+  --scroll-blue-week3: #90caf9;
+  --scroll-blue-week4: #64b5f6;
+  --scroll-blue-week5: #42a5f5;
+  
+  /* Зеленая палитра (Март, Апрель, Май) */
+  --scroll-green-week1: #e8f5e9;
+  --scroll-green-week2: #c8e6c9;
+  --scroll-green-week3: #a5d6a7;
+  --scroll-green-week4: #81c784;
+  --scroll-green-week5: #66bb6a;
+  
+  /* Красная палитра (Июнь, Июль, Август) */
+  --scroll-red-week1: #ffebee;
+  --scroll-red-week2: #ffcdd2;
+  --scroll-red-week3: #ef9a9a;
+  --scroll-red-week4: #e57373;
+  --scroll-red-week5: #ef5350;
+  
+  /* Оранжевая палитра (Сентябрь, Октябрь, Ноябрь) */
+  --scroll-orange-week1: #fff3e0;
+  --scroll-orange-week2: #ffe0b2;
+  --scroll-orange-week3: #ffcc80;
+  --scroll-orange-week4: #ffb74d;
+  --scroll-orange-week5: #ffa726;
+  
+  /* Фиолетовая палитра (Декабрь) */
+  --scroll-purple-week1: #f3e5f5;
+  --scroll-purple-week2: #e1bee7;
+  --scroll-purple-week3: #ce93d8;
+  --scroll-purple-week4: #ba68c8;
+  --scroll-purple-week5: #ab47bc;
+}
+
+/* ==================== Классы для свитков ==================== */
+
+/* Контейнер свитка */
+.scroll-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  transition: all 0.3s ease;
+}
+
+/* Заголовок месяца */
+.scroll-month-header {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+/* Контейнер недель */
+.scroll-weeks-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Отдельная неделя */
+.scroll-week {
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border-left: 4px solid rgba(0, 0, 0, 0.1);
+}
+
+.scroll-week:hover {
+  transform: translateX(4px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ==================== Синяя тема (Январь, Февраль) ==================== */
+.scroll-theme-blue {
+  background: linear-gradient(135deg, #f5faff 0%, #e3f2fd 100%);
+}
+
+.scroll-theme-blue .scroll-month-header {
+  background-color: var(--scroll-blue-week3);
+  color: #1565c0;
+}
+
+.scroll-theme-blue .scroll-week-1 {
+  background-color: var(--scroll-blue-week1);
+  color: #1976d2;
+  border-left-color: var(--scroll-blue-week3);
+}
+
+.scroll-theme-blue .scroll-week-2 {
+  background-color: var(--scroll-blue-week2);
+  color: #1565c0;
+  border-left-color: var(--scroll-blue-week4);
+}
+
+.scroll-theme-blue .scroll-week-3 {
+  background-color: var(--scroll-blue-week3);
+  color: #0d47a1;
+  border-left-color: var(--scroll-blue-week5);
+}
+
+.scroll-theme-blue .scroll-week-4 {
+  background-color: var(--scroll-blue-week4);
+  color: #0d47a1;
+  border-left-color: #1976d2;
+}
+
+.scroll-theme-blue .scroll-week-5 {
+  background-color: var(--scroll-blue-week5);
+  color: #ffffff;
+  border-left-color: #1565c0;
+}
+
+/* ==================== Зеленая тема (Март, Апрель, Май) ==================== */
+.scroll-theme-green {
+  background: linear-gradient(135deg, #f1f8f1 0%, #e8f5e9 100%);
+}
+
+.scroll-theme-green .scroll-month-header {
+  background-color: var(--scroll-green-week3);
+  color: #2e7d32;
+}
+
+.scroll-theme-green .scroll-week-1 {
+  background-color: var(--scroll-green-week1);
+  color: #388e3c;
+  border-left-color: var(--scroll-green-week3);
+}
+
+.scroll-theme-green .scroll-week-2 {
+  background-color: var(--scroll-green-week2);
+  color: #2e7d32;
+  border-left-color: var(--scroll-green-week4);
+}
+
+.scroll-theme-green .scroll-week-3 {
+  background-color: var(--scroll-green-week3);
+  color: #1b5e20;
+  border-left-color: var(--scroll-green-week5);
+}
+
+.scroll-theme-green .scroll-week-4 {
+  background-color: var(--scroll-green-week4);
+  color: #1b5e20;
+  border-left-color: #388e3c;
+}
+
+.scroll-theme-green .scroll-week-5 {
+  background-color: var(--scroll-green-week5);
+  color: #ffffff;
+  border-left-color: #2e7d32;
+}
+
+/* ==================== Красная тема (Июнь, Июль, Август) ==================== */
+.scroll-theme-red {
+  background: linear-gradient(135deg, #fff5f5 0%, #ffebee 100%);
+}
+
+.scroll-theme-red .scroll-month-header {
+  background-color: var(--scroll-red-week3);
+  color: #c62828;
+}
+
+.scroll-theme-red .scroll-week-1 {
+  background-color: var(--scroll-red-week1);
+  color: #d32f2f;
+  border-left-color: var(--scroll-red-week3);
+}
+
+.scroll-theme-red .scroll-week-2 {
+  background-color: var(--scroll-red-week2);
+  color: #c62828;
+  border-left-color: var(--scroll-red-week4);
+}
+
+.scroll-theme-red .scroll-week-3 {
+  background-color: var(--scroll-red-week3);
+  color: #b71c1c;
+  border-left-color: var(--scroll-red-week5);
+}
+
+.scroll-theme-red .scroll-week-4 {
+  background-color: var(--scroll-red-week4);
+  color: #b71c1c;
+  border-left-color: #d32f2f;
+}
+
+.scroll-theme-red .scroll-week-5 {
+  background-color: var(--scroll-red-week5);
+  color: #ffffff;
+  border-left-color: #c62828;
+}
+
+/* ==================== Оранжевая тема (Сентябрь, Октябрь, Ноябрь) ==================== */
+.scroll-theme-orange {
+  background: linear-gradient(135deg, #fff8f1 0%, #fff3e0 100%);
+}
+
+.scroll-theme-orange .scroll-month-header {
+  background-color: var(--scroll-orange-week3);
+  color: #e65100;
+}
+
+.scroll-theme-orange .scroll-week-1 {
+  background-color: var(--scroll-orange-week1);
+  color: #f57c00;
+  border-left-color: var(--scroll-orange-week3);
+}
+
+.scroll-theme-orange .scroll-week-2 {
+  background-color: var(--scroll-orange-week2);
+  color: #e65100;
+  border-left-color: var(--scroll-orange-week4);
+}
+
+.scroll-theme-orange .scroll-week-3 {
+  background-color: var(--scroll-orange-week3);
+  color: #bf360c;
+  border-left-color: var(--scroll-orange-week5);
+}
+
+.scroll-theme-orange .scroll-week-4 {
+  background-color: var(--scroll-orange-week4);
+  color: #bf360c;
+  border-left-color: #f57c00;
+}
+
+.scroll-theme-orange .scroll-week-5 {
+  background-color: var(--scroll-orange-week5);
+  color: #ffffff;
+  border-left-color: #e65100;
+}
+
+/* ==================== Фиолетовая тема (Декабрь) ==================== */
+.scroll-theme-purple {
+  background: linear-gradient(135deg, #faf5fb 0%, #f3e5f5 100%);
+}
+
+.scroll-theme-purple .scroll-month-header {
+  background-color: var(--scroll-purple-week3);
+  color: #6a1b9a;
+}
+
+.scroll-theme-purple .scroll-week-1 {
+  background-color: var(--scroll-purple-week1);
+  color: #7b1fa2;
+  border-left-color: var(--scroll-purple-week3);
+}
+
+.scroll-theme-purple .scroll-week-2 {
+  background-color: var(--scroll-purple-week2);
+  color: #6a1b9a;
+  border-left-color: var(--scroll-purple-week4);
+}
+
+.scroll-theme-purple .scroll-week-3 {
+  background-color: var(--scroll-purple-week3);
+  color: #4a148c;
+  border-left-color: var(--scroll-purple-week5);
+}
+
+.scroll-theme-purple .scroll-week-4 {
+  background-color: var(--scroll-purple-week4);
+  color: #4a148c;
+  border-left-color: #7b1fa2;
+}
+
+.scroll-theme-purple .scroll-week-5 {
+  background-color: var(--scroll-purple-week5);
+  color: #ffffff;
+  border-left-color: #6a1b9a;
+}
+
+/* ==================== Адаптивность ==================== */
+@media (max-width: 768px) {
+  .scroll-container {
+    padding: 12px;
+  }
+  
+  .scroll-month-header {
+    font-size: 1.1rem;
+  }
+  
+  .scroll-week {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+}
+
+/* ==================== Анимации ==================== */
+@keyframes scrollFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scroll-container {
+  animation: scrollFadeIn 0.4s ease-out;
+}
+
+.scroll-week {
+  animation: scrollFadeIn 0.3s ease-out;
+  animation-fill-mode: both;
+}
+
+.scroll-week:nth-child(1) { animation-delay: 0.05s; }
+.scroll-week:nth-child(2) { animation-delay: 0.1s; }
+.scroll-week:nth-child(3) { animation-delay: 0.15s; }
+.scroll-week:nth-child(4) { animation-delay: 0.2s; }
+.scroll-week:nth-child(5) { animation-delay: 0.25s; }
